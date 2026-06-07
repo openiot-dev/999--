@@ -1,0 +1,11 @@
+.venv/
+.venv-mlx/
+__pycache__/
+*.pyc
+build/
+dist/
+*.egg-info/
+*.spec.bak
+transcripts/
+out/
+.DS_Store

@@ -1,0 +1,20 @@
+# ── YouTube 자막 가져오기 (인스턴스 API; 정적 메서드는 1.2.0에서 제거됨) ──
+youtube-transcript-api>=1.2.4,<2.0
+
+# ── 채널/재생목록 영상 열거 + 오디오 다운로드 ──
+# YouTube는 자주 바뀌므로 가능하면 최신(nightly)으로 업데이트하세요:
+#   pip install -U --pre "yt-dlp[default,curl-cffi]"
+# curl-cffi 는 별도 extra (TLS 임퍼소네이션으로 차단 회피에 도움)
+yt-dlp[default,curl-cffi]>=2026.3.17
+
+# ── 로컬 음성인식 (자막이 없을 때 폴백; ctranslate2 + PyAV 를 함께 설치) ──
+# Mac(Apple Silicon)에서는 CPU로 동작. 더 빠른 GPU 경로는 requirements-mlx.txt 참고.
+faster-whisper>=1.2.1,<2.0
+
+# 참고:
+#  * yt-dlp 는 ffmpeg / ffprobe '바이너리'가 PATH에 있어야 합니다 (PyPI 의 ffmpeg 패키지 아님).
+#       macOS: brew install ffmpeg
+#  * tkinter(GUI) 는 표준 라이브러리지만 Homebrew python 에는 Tk 바인딩이 빠져 있습니다.
+#       macOS(Homebrew): brew install python-tk@3.12
+#       (시스템/python.org 빌드에는 보통 포함되어 있음)
+#  * 권장 런타임: Python 3.12 (3.14 는 일부 컴파일 휠이 늦게 올라옵니다).

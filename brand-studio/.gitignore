@@ -1,0 +1,12 @@
+node_modules/
+.next/
+out/
+.env.local
+.env*.local
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+
+# 동기화 수집 원본(재생성됨, 내부 자료) — KB 결과물(company-kb.md)·seed 만 추적
+data/company-sources/
+data/company-raw.md

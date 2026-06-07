@@ -1,0 +1,78 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* ── 디자인 토큰 ───────────────────────────────────────────── */
+@theme {
+  --color-paper: #f6f3ec;     /* 따뜻한 종이 캔버스 */
+  --color-ink: #15171c;       /* 잉크(거의 검정) */
+  --color-ink-soft: #4a4d57;
+  --color-line: #e3ddd0;      /* 경계선 */
+  --color-coral: #ff5a3c;     /* 메인 액센트 */
+  --color-coral-dark: #e8401f;
+  --color-moss: #1f6f5c;      /* 보조 액센트 */
+  --color-amber: #f2b705;
+
+  --font-display: var(--font-fraunces), "Fraunces", Georgia, serif;
+  --font-sans: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+  --radius-xl2: 1.25rem;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-coral);
+  color: #fff;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+}
+
+/* 살짝 들어간 카드 그림자 */
+.card {
+  background: #fffdf8;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-xl2);
+}
+
+/* 입력 요소 공통 */
+.field {
+  width: 100%;
+  background: #fffdf8;
+  border: 1px solid var(--color-line);
+  border-radius: 0.75rem;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.925rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.field:focus {
+  outline: none;
+  border-color: var(--color-coral);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-coral) 18%, transparent);
+}
+
+/* 결과 마크다운 영역 스크롤바 */
+.thin-scroll::-webkit-scrollbar { width: 9px; height: 9px; }
+.thin-scroll::-webkit-scrollbar-thumb { background: #d8d1c2; border-radius: 999px; }
+.thin-scroll::-webkit-scrollbar-track { background: transparent; }
+
+/* 점멸 커서(스트리밍 표시) */
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.cursor-blink::after {
+  content: "▍";
+  margin-left: 1px;
+  animation: blink 1s steps(1) infinite;
+  color: var(--color-coral);
+}

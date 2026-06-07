@@ -1,0 +1,9 @@
+# Apple Silicon(arm64) 전용 고속 음성인식 경로 — faster-whisper 대비 수 배 빠름.
+# torch + mlx 를 받으므로 용량이 큽니다. faster-whisper 환경과 '별도 venv'로 설치하세요.
+#   python3.12 -m venv .venv-mlx
+#   .venv-mlx/bin/pip install -r requirements-mlx.txt
+# transcribe 모듈은 mlx-whisper 가 설치돼 있으면 자동으로 우선 사용합니다.
+mlx-whisper>=0.4.3
+youtube-transcript-api>=1.2.4,<2.0
+yt-dlp[default,curl-cffi]>=2026.3.17
+# yt-dlp 의 오디오 추출과 mlx-whisper 의 비-WAV 입력 처리에도 ffmpeg/ffprobe 바이너리가 필요합니다.

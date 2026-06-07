@@ -1,0 +1,21 @@
+[project]
+name = "ytbatch"
+version = "0.1.0"
+description = "유튜브 채널/재생목록 영상의 대본을 일괄 추출하는 데스크톱 앱"
+requires-python = ">=3.10,<3.15"
+dependencies = [
+    "youtube-transcript-api>=1.2.4,<2.0",
+    "yt-dlp[default,curl-cffi]>=2026.3.17",
+    "faster-whisper>=1.2.1,<2.0",
+]
+
+[project.scripts]
+ytbatch = "ytbatch.cli:main"
+ytbatch-gui = "ytbatch.app:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

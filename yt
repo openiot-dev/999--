@@ -1,0 +1,31 @@
+#!/bin/bash
+# CLI 실행 래퍼. 사용법:
+#   ./yt "<유튜브 URL>" [옵션]
+# 예:
+#   ./yt "https://www.youtube.com/@채널핸들" -o ./대본 --lang ko
+#   ./yt "https://www.youtube.com/playlist?list=PLxxxx" -o ./대본
+#   ./yt "https://youtu.be/영상ID" --no-whisper
+set -e
+cd "$(dirname "$0")"
+
+# 첫 실행이면 환경 자동 설치
+if [ ! -f ".venv/.installed" ]; then
+  PY=python3.12
+  command -v "$PY" >/dev/null 2>&1 || PY=python3
+  echo "처음 실행: 환경을 설치합니다 (몇 분 걸릴 수 있어요)…" >&2
+  rm -rf .venv
+  trap 'echo "설치 실패 — .venv 정리. 다시 실행하세요." >&2; rm -rf .venv' ERR
+  "$PY" -m venv .venv
+  ./.venv/bin/python -m pip install --upgrade pip >/dev/null
+  ./.venv/bin/pip install -e . >/dev/null
+  touch .venv/.installed
+  trap - ERR
+fi
+
+if [ "$#" -eq 0 ]; then
+  echo "사용법: ./yt \"<유튜브 URL>\" [-o 저장폴더] [--lang ko|en] [--model large-v3-turbo] [--no-whisper]" >&2
+  echo "옵션 전체: ./yt --help" >&2
+  exit 1
+fi
+
+exec ./.venv/bin/ytbatch "$@"
