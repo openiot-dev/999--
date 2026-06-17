@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@700;900&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:1280px; height:720px; overflow:hidden; }
+.stage{
+  position:relative; width:1280px; height:720px; overflow:hidden;
+  font-family:'Noto Sans KR',sans-serif; color:#fff;
+  background:
+    radial-gradient(680px 680px at 80% 36%, rgba(120,150,210,.22), transparent 62%),
+    radial-gradient(900px 700px at 12% 8%, rgba(255,59,48,.14), transparent 60%),
+    linear-gradient(135deg,#0a0f1c 0%, #0d1424 48%, #0a0f1c 100%);
+}
+/* cinematic vignette */
+.stage::after{ content:""; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(0,0,0,.55) 100%); }
+/* faint grid, very subtle */
+.stage::before{ content:""; position:absolute; inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:54px 54px; mask-image:radial-gradient(80% 80% at 30% 30%,#000,transparent 75%); }
+
+/* authority badge top-left */
+.badge{ position:absolute; top:34px; left:50px; z-index:6; display:flex; align-items:center; gap:12px;
+  background:rgba(8,16,30,.78); border:2px solid rgba(95,227,161,.55); border-radius:999px;
+  padding:11px 20px 11px 16px; box-shadow:0 8px 22px rgba(0,0,0,.45); }
+.badge .dot{ width:22px; height:22px; border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,#5FE3A1,#1FA86B); box-shadow:0 0 14px rgba(47,209,122,.7); }
+.badge .txt{ font-weight:900; font-size:25px; letter-spacing:-.5px; color:#dfe7f2; }
+.badge .txt b{ color:#5FE3A1; }
+
+/* proof object: price flip card (upper-left) */
+.proof{ position:absolute; left:54px; top:110px; width:392px; z-index:5; text-align:center; }
+.proof .old{ position:relative; display:inline-block; font-family:'Black Han Sans',sans-serif;
+  font-size:60px; color:#aab4c6; letter-spacing:-2px; line-height:1; }
+.proof .old::after{ content:""; position:absolute; left:-12px; right:-12px; top:50%; height:10px;
+  background:#FF3B30; transform:rotate(-9deg); border-radius:6px; box-shadow:0 3px 12px rgba(255,59,48,.6); }
+.proof .cap1{ font-weight:700; font-size:24px; color:#8995ab; letter-spacing:-.5px; margin-top:6px; }
+.proof .arr{ font-family:'Black Han Sans',sans-serif; font-size:46px; color:#FFE600; line-height:1; margin:6px 0 2px; }
+.proof .new{ display:inline-block; font-family:'Black Han Sans',sans-serif; font-size:90px;
+  color:#5FE3A1; letter-spacing:-3px; line-height:.92; text-shadow:0 0 38px rgba(47,209,122,.5); }
+.proof .cap2{ display:inline-block; margin-top:10px; background:#1FA86B; color:#fff; font-weight:900;
+  font-size:28px; letter-spacing:-.5px; padding:8px 22px; border-radius:999px; box-shadow:0 8px 22px rgba(31,168,107,.5); }
+
+/* face placeholder zone (right) */
+.face{ position:absolute; right:0; top:0; width:476px; height:720px; z-index:3;
+  background:radial-gradient(300px 360px at 52% 40%, rgba(150,180,230,.18), transparent 70%); }
+.face .slot{ position:absolute; left:44px; right:40px; top:96px; bottom:150px;
+  border:3px dashed rgba(180,200,230,.5); border-radius:26px;
+  display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:0; }
+.face .sil{ width:150px; height:150px; border-radius:50%;
+  background:rgba(200,215,240,.16); margin-bottom:-14px; }
+.face .sil2{ width:236px; height:150px; border-radius:120px 120px 0 0; background:rgba(200,215,240,.16); }
+.face .lbl{ position:absolute; top:42%; left:0; right:0; text-align:center;
+  font-weight:900; font-size:30px; color:#aab8d0; letter-spacing:-.5px; line-height:1.35; }
+.face .lbl small{ display:block; font-size:22px; color:#7e8aa3; font-weight:700; margin-top:6px; }
+
+/* bottom text band */
+.band{ position:absolute; left:0; right:0; bottom:0; height:330px; z-index:4; pointer-events:none;
+  background:linear-gradient(0deg, rgba(5,8,16,.92) 30%, rgba(5,8,16,.55) 65%, transparent 100%); }
+.head{ position:absolute; left:54px; bottom:48px; z-index:5; font-family:'Black Han Sans',sans-serif;
+  letter-spacing:-1.5px; line-height:.98; }
+.head .l1{ font-size:78px; color:#fff;
+  -webkit-text-stroke:9px #05060c; paint-order:stroke fill; text-shadow:0 6px 20px rgba(0,0,0,.6); }
+.head .l2{ font-size:104px; color:#FFE600; margin-top:6px;
+  -webkit-text-stroke:11px #05060c; paint-order:stroke fill; text-shadow:0 8px 24px rgba(0,0,0,.7); }
+.head .l1 .q{ color:#fff; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="badge"><span class="dot"></span><span class="txt">카카오 골프장 <b>공급사</b></span></div>
+
+  <div class="proof">
+    <div class="old">수천만 원</div>
+    <div class="cap1">처음부터 직접 개발</div>
+    <div class="arr">▼</div>
+    <div class="new">0원</div>
+    <div class="cap2">칩 연결 · 3분 시작</div>
+  </div>
+
+  <div class="face">
+    <div class="slot">
+      <div class="sil"></div>
+      <div class="sil2"></div>
+      <div class="lbl">대표·엔지니어<small>사진 합성 자리</small></div>
+    </div>
+  </div>
+
+  <div class="band"></div>
+  <div class="head">
+    <div class="l1">이 IoT 견적, 왜 비싸냐고요?</div>
+    <div class="l2">이게 제일 싼 겁니다</div>
+  </div>
+</div>
+</body>
+</html>

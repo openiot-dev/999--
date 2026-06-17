@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@500;700;900&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:1280px; height:720px; overflow:hidden; }
+.stage{
+  position:relative; width:1280px; height:720px;
+  background:
+    radial-gradient(900px 600px at 80% 16%, rgba(47,209,122,.20), transparent 60%),
+    radial-gradient(700px 500px at 8% 96%, rgba(35,90,170,.30), transparent 60%),
+    linear-gradient(135deg,#0a1020 0%, #0e1626 45%, #121d31 100%);
+  font-family:'Noto Sans KR',sans-serif; color:#fff; overflow:hidden;
+}
+/* faint engineering grid */
+.stage::before{
+  content:""; position:absolute; inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:48px 48px; mask-image:linear-gradient(120deg,transparent,#000 70%);
+}
+.kicker{ position:absolute; top:54px; left:64px; display:flex; align-items:center; gap:14px; }
+.kicker .pill{
+  background:#1FA86B; color:#fff; font-weight:900; font-size:30px; letter-spacing:-.5px;
+  padding:12px 22px; border-radius:999px; box-shadow:0 8px 26px rgba(31,168,107,.45);
+}
+.kicker .sub{ font-weight:700; font-size:26px; color:#aeb9cc; letter-spacing:-.5px; }
+.head{
+  position:absolute; left:60px; top:152px; line-height:.92;
+  font-family:'Black Han Sans',sans-serif; letter-spacing:-1px;
+  text-shadow:0 10px 34px rgba(0,0,0,.55);
+}
+.head .l1{ font-size:148px; color:#fff; }
+.head .l2{ font-size:188px; color:#5FE3A1; display:inline-block; position:relative; }
+.head .l2 .u{ position:absolute; left:0; right:0; bottom:18px; height:14px;
+  background:#5FE3A1; opacity:.28; border-radius:8px; }
+.subline{ position:absolute; left:66px; top:560px; display:flex; align-items:center; gap:18px; }
+.subline .bar{ width:14px; height:54px; background:#FFB020; border-radius:4px; }
+.subline .t{ font-weight:900; font-size:50px; color:#fff; letter-spacing:-1px; }
+.subline .t b{ color:#FFB020; }
+/* right: value chips you GET */
+.chips{ position:absolute; right:56px; top:158px; width:440px; }
+.chips .cap{ font-weight:900; font-size:28px; color:#5FE3A1; letter-spacing:-.5px;
+  text-align:right; margin-bottom:18px; }
+.chip{
+  display:flex; align-items:center; gap:20px; justify-content:flex-end;
+  background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+  border:2px solid rgba(47,209,122,.55); border-radius:18px;
+  padding:20px 24px; margin-bottom:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35); backdrop-filter:blur(2px);
+}
+.chip .name{ font-weight:900; font-size:42px; color:#fff; letter-spacing:-1px; }
+.chip .ck{ width:50px; height:50px; border-radius:12px; background:#1FA86B;
+  display:flex; align-items:center; justify-content:center; font-size:32px; font-weight:900;
+  box-shadow:0 6px 16px rgba(31,168,107,.5); }
+/* bottom authority bar */
+.brand{ position:absolute; left:64px; bottom:40px; display:flex; align-items:center; gap:18px; }
+.brand .logo{ display:flex; align-items:center; gap:12px; }
+.brand .dot{ width:26px; height:26px; border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,#5FE3A1,#1FA86B); box-shadow:0 0 18px rgba(47,209,122,.6); }
+.brand .name{ font-weight:900; font-size:34px; letter-spacing:-.5px; }
+.brand .name .o{ color:#fff; } .brand .name .i{ color:#5FE3A1; }
+.brand .sep{ width:2px; height:30px; background:rgba(255,255,255,.2); }
+.brand .badge{ font-weight:700; font-size:27px; color:#c6cfde; letter-spacing:-.5px; }
+.brand .badge b{ color:#fff; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="kicker">
+    <span class="pill">IoT 외주 받는 회사가 직접</span>
+    <span class="sub">제조사 대표·CTO 필독</span>
+  </div>
+
+  <div class="head">
+    <div class="l1">비싼 견적이</div>
+    <div class="l2">제일 싸다<span class="u"></span></div>
+  </div>
+
+  <div class="subline">
+    <span class="bar"></span>
+    <span class="t">총비용으로 보면 <b>역전</b>됩니다</span>
+  </div>
+
+  <div class="chips">
+    <div class="cap">비싼 값이 사는 것 ↓</div>
+    <div class="chip"><span class="name">통합 책임</span><span class="ck">✓</span></div>
+    <div class="chip"><span class="name">보안·확장성</span><span class="ck">✓</span></div>
+    <div class="chip"><span class="name">남는 자산</span><span class="ck">✓</span></div>
+  </div>
+
+  <div class="brand">
+    <span class="logo"><span class="dot"></span><span class="name"><span class="o">open</span><span class="i">IoT</span></span></span>
+    <span class="sep"></span>
+    <span class="badge">카카오 골프장 제어시스템 <b>공급사</b></span>
+  </div>
+</div>
+</body>
+</html>

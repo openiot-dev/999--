@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@500;700;900&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:1280px; height:720px; overflow:hidden; }
+.stage{
+  position:relative; width:1280px; height:720px;
+  background:
+    radial-gradient(820px 560px at 22% 16%, rgba(255,176,32,.18), transparent 60%),
+    radial-gradient(760px 560px at 92% 90%, rgba(255,59,48,.22), transparent 60%),
+    linear-gradient(135deg,#0a1020 0%, #0e1626 45%, #121d31 100%);
+  font-family:'Noto Sans KR',sans-serif; color:#fff; overflow:hidden;
+}
+.stage::before{
+  content:""; position:absolute; inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:48px 48px; mask-image:linear-gradient(200deg,transparent,#000 70%);
+}
+.kicker{ position:absolute; top:56px; left:64px; }
+.kicker .pill{ background:#10233f; border:2px solid rgba(255,176,32,.6); color:#FFCB57;
+  font-weight:900; font-size:30px; letter-spacing:-.5px; padding:12px 24px; border-radius:999px; }
+.head{ position:absolute; left:60px; top:140px; line-height:.94;
+  font-family:'Black Han Sans',sans-serif; letter-spacing:-1px;
+  text-shadow:0 10px 34px rgba(0,0,0,.55); }
+.head .l1{ font-size:150px; color:#fff; }
+.head .l1 .m{ color:#FFB020; }
+.head .l2{ font-size:150px; color:#FF4D4D; }
+.head .l2 .drop{ color:#FF4D4D; }
+/* leaking arrow to the chips */
+.note{ position:absolute; left:66px; top:470px; font-weight:900; font-size:46px;
+  color:#fff; letter-spacing:-1px; }
+.note b{ color:#FF6B6B; }
+/* right stack of the three leaks */
+.chips{ position:absolute; right:54px; top:188px; width:470px; }
+.chip{
+  display:flex; align-items:center; gap:22px; justify-content:flex-start;
+  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+  border:2px solid rgba(255,176,32,.5); border-radius:18px;
+  padding:20px 26px; margin-bottom:20px; box-shadow:0 12px 30px rgba(0,0,0,.4);
+}
+.chip .won{ width:54px; height:54px; border-radius:50%; background:#FFB020; color:#10233f;
+  display:flex; align-items:center; justify-content:center; font-size:36px; font-weight:900;
+  box-shadow:0 6px 16px rgba(255,176,32,.5); }
+.chip .name{ font-weight:900; font-size:46px; color:#fff; letter-spacing:-1px; }
+.brand{ position:absolute; left:64px; bottom:40px; display:flex; align-items:center; gap:18px; }
+.brand .dot{ width:26px; height:26px; border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,#5FE3A1,#1FA86B); box-shadow:0 0 18px rgba(47,209,122,.6); }
+.brand .logo{ display:flex; align-items:center; gap:12px; }
+.brand .name{ font-weight:900; font-size:34px; letter-spacing:-.5px; }
+.brand .name .o{ color:#fff; } .brand .name .i{ color:#5FE3A1; }
+.brand .sep{ width:2px; height:30px; background:rgba(255,255,255,.2); }
+.brand .badge{ font-weight:700; font-size:27px; color:#c6cfde; letter-spacing:-.5px; }
+.brand .badge b{ color:#fff; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="kicker"><span class="pill">싼 IoT 견적의 함정</span></div>
+
+  <div class="head">
+    <div class="l1">여기서 <span class="m">돈</span>이</div>
+    <div class="l2">샙니다</div>
+  </div>
+
+  <div class="note">양산하면 터지는 <b>3곳</b></div>
+
+  <div class="chips">
+    <div class="chip"><span class="won">₩</span><span class="name">보안</span></div>
+    <div class="chip"><span class="won">₩</span><span class="name">확장성(트래픽)</span></div>
+    <div class="chip"><span class="won">₩</span><span class="name">통합 책임</span></div>
+  </div>
+
+  <div class="brand">
+    <span class="logo"><span class="dot"></span><span class="name"><span class="o">open</span><span class="i">IoT</span></span></span>
+    <span class="sep"></span>
+    <span class="badge">IoT 외주 받는 회사가 <b>직접 폭로</b></span>
+  </div>
+</div>
+</body>
+</html>

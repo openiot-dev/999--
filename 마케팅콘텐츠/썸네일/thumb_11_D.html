@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@700;900&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:1280px; height:720px; overflow:hidden; }
+.stage{
+  position:relative; width:1280px; height:720px; overflow:hidden;
+  font-family:'Noto Sans KR',sans-serif; color:#fff;
+  background:
+    radial-gradient(680px 680px at 80% 36%, rgba(120,150,210,.20), transparent 62%),
+    radial-gradient(900px 720px at 10% 92%, rgba(255,59,48,.20), transparent 60%),
+    linear-gradient(135deg,#0c0c14 0%, #14101a 48%, #0c0c14 100%);
+}
+.stage::after{ content:""; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 42%, transparent 54%, rgba(0,0,0,.58) 100%); }
+.stage::before{ content:""; position:absolute; inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:54px 54px; mask-image:radial-gradient(80% 80% at 28% 32%,#000,transparent 75%); }
+
+.badge{ position:absolute; top:34px; left:50px; z-index:6; display:flex; align-items:center; gap:12px;
+  background:rgba(16,10,12,.8); border:2px solid rgba(255,77,77,.6); border-radius:999px;
+  padding:11px 20px 11px 16px; box-shadow:0 8px 22px rgba(0,0,0,.45); }
+.badge .dot{ width:22px; height:22px; border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,#5FE3A1,#1FA86B); box-shadow:0 0 14px rgba(47,209,122,.7); }
+.badge .txt{ font-weight:900; font-size:25px; letter-spacing:-.5px; color:#eed7da; }
+.badge .txt b{ color:#FF6B6B; }
+
+/* proof: pay-twice bills (upper-left) */
+.proof{ position:absolute; left:56px; top:152px; width:404px; z-index:5; }
+.bill{ display:flex; align-items:center; gap:16px; border-radius:16px; padding:16px 22px; margin-bottom:14px;
+  box-shadow:0 10px 26px rgba(0,0,0,.4); }
+.bill .ic{ width:46px; height:46px; border-radius:11px; display:flex; align-items:center; justify-content:center;
+  font-family:'Black Han Sans',sans-serif; font-size:30px; }
+.bill .tt{ font-weight:900; letter-spacing:-.8px; line-height:1.05; }
+.bill .tt b{ display:block; font-size:38px; }
+.bill .tt span{ font-size:21px; font-weight:700; opacity:.8; }
+.bill.one{ background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.03));
+  border:2px solid rgba(170,180,200,.45); }
+.bill.one .ic{ background:#aab4c6; color:#10141c; }
+.bill.one .tt b{ color:#dfe7f2; } .bill.one .tt span{ color:#9aa6bb; }
+.plus{ font-family:'Black Han Sans',sans-serif; font-size:46px; color:#FF4D4D; text-align:center;
+  line-height:.6; margin:2px 0 10px; }
+.bill.two{ background:linear-gradient(180deg,rgba(255,59,48,.22),rgba(255,59,48,.08));
+  border:2px solid rgba(255,77,77,.75); }
+.bill.two .ic{ background:#FF3B30; color:#fff; }
+.bill.two .tt b{ color:#fff; } .bill.two .tt span{ color:#ffc4c0; }
+.stamp{ position:absolute; right:-16px; top:250px; transform:rotate(11deg);
+  font-family:'Black Han Sans',sans-serif; font-size:42px; color:#FF4D4D;
+  border:5px solid #FF4D4D; border-radius:14px; padding:6px 16px; letter-spacing:-1px;
+  box-shadow:0 6px 18px rgba(0,0,0,.4); background:rgba(20,10,12,.72); }
+
+/* face placeholder */
+.face{ position:absolute; right:0; top:0; width:476px; height:720px; z-index:3;
+  background:radial-gradient(300px 360px at 52% 40%, rgba(150,180,230,.16), transparent 70%); }
+.face .slot{ position:absolute; left:44px; right:40px; top:96px; bottom:150px;
+  border:3px dashed rgba(180,200,230,.5); border-radius:26px;
+  display:flex; flex-direction:column; align-items:center; justify-content:flex-end; }
+.face .sil{ width:150px; height:150px; border-radius:50%; background:rgba(200,215,240,.15); margin-bottom:-14px; }
+.face .sil2{ width:236px; height:150px; border-radius:120px 120px 0 0; background:rgba(200,215,240,.15); }
+.face .lbl{ position:absolute; top:42%; left:0; right:0; text-align:center;
+  font-weight:900; font-size:30px; color:#aab8d0; letter-spacing:-.5px; line-height:1.35; }
+.face .lbl small{ display:block; font-size:22px; color:#7e8aa3; font-weight:700; margin-top:6px; }
+
+.band{ position:absolute; left:0; right:0; bottom:0; height:330px; z-index:4; pointer-events:none;
+  background:linear-gradient(0deg, rgba(6,5,9,.93) 30%, rgba(6,5,9,.55) 65%, transparent 100%); }
+.head{ position:absolute; left:54px; bottom:48px; z-index:5; font-family:'Black Han Sans',sans-serif;
+  letter-spacing:-1.5px; line-height:.98; }
+.head .l1{ font-size:82px; color:#fff;
+  -webkit-text-stroke:9px #06050a; paint-order:stroke fill; text-shadow:0 6px 20px rgba(0,0,0,.6); }
+.head .l2{ font-size:100px; color:#FFE600; margin-top:6px;
+  -webkit-text-stroke:11px #06050a; paint-order:stroke fill; text-shadow:0 8px 24px rgba(0,0,0,.7); }
+.head .l2 b{ color:#FF4D4D; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="badge"><span class="dot"></span><span class="txt">외주 받는 회사가 <b>직접</b></span></div>
+
+  <div class="proof">
+    <div class="bill one"><span class="ic">₩</span><span class="tt"><b>싼 견적</b><span>지금 보이는 값</span></span></div>
+    <div class="plus">+</div>
+    <div class="bill two"><span class="ic">₩</span><span class="tt"><b>출시 후 청구서</b><span>보안재설계·재구축·지연</span></span></div>
+    <div class="stamp">결국 2번</div>
+  </div>
+
+  <div class="face">
+    <div class="slot">
+      <div class="sil"></div>
+      <div class="sil2"></div>
+      <div class="lbl">대표·엔지니어<small>사진 합성 자리</small></div>
+    </div>
+  </div>
+
+  <div class="band"></div>
+  <div class="head">
+    <div class="l1">싼 견적 골랐다가</div>
+    <div class="l2">출시 후 <b>두 번</b> 냅니다</div>
+  </div>
+</div>
+</body>
+</html>
